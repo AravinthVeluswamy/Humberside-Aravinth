@@ -1,8 +1,7 @@
-# :earth_americas: GDP dashboard template
+# :earth_americas: Humberside Crime Data Analysis
 
-A simple Streamlit app showing the GDP of different countries in the world.
+This is my simple Streamlit app showing the Crime rates of different locations near Humberside England.
 
-[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://gdp-dashboard-template.streamlit.app/)
 
 ### How to run it on your own machine
 
