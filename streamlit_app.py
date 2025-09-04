@@ -292,6 +292,7 @@ with tab1:
     # Time series mini-plot (sampled aggregation if months exist)
     if 'Month' in df.columns and df['Month'].notna().any():
         monthly = df.groupby(df['Month'].dt.to_period('M')).size().sort_index()
+        monthly.index = monthly.index.to_timestamp() 
         # converting to numeric and show last 24 months
         monthly = monthly[-24:]
         st.line_chart(monthly.astype(int))
