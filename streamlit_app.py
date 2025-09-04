@@ -1,8 +1,8 @@
-# fast_crime_dashboard.py
+# Humberside_crime_dashboard.py
 # Fast Streamlit Predictive Analytics Dashboard for large crime dataset
-# - Optimised to load and show results quickly on large datasets (~300k rows)
-# - Trains on a STRATIFIED SAMPLE and caches model to disk to avoid re-training on reloads
-# - Lightweight features & model for speedy inference
+# It is optimised to load and show results quickly on large datasets (~300k rows)
+# It trains on a STRATIFIED SAMPLE and caches model to disk to avoid re-training on reloads
+# It holds lightweight features & model for speedy inference
 
 import os
 import zipfile
@@ -28,7 +28,7 @@ import joblib
 # Config - tune these for speed vs accuracy
 # ---------------------------
 SEED = 42
-MAX_TRAIN_SAMPLES = 40000    # how many rows to use to train the model (stratified). ~40k is fast and representative
+MAX_TRAIN_SAMPLES = 100000    # how many rows to use to train the model (stratified). ~40k is fast and representative
 TFIDF_MAX_FEATURES = 1000    # reduce text vector size for speed
 MODEL_PATH = "cached_crime_model.joblib"
 ENC_PATH = "cached_encoders.joblib"
@@ -45,7 +45,7 @@ def detect_csv_in_zip(zip_path):
     return None
 
 @st.cache_data(show_spinner=False)
-def load_dataframe(path_or_zip="data/humberside-street-merged.zip"):
+def load_dataframe(path_or_zip="data/humberside_merged.zip"):
     """
     Load the CSV quickly and cache it.
     Accepts either:
@@ -264,7 +264,7 @@ st.title("Fast Predictive Analytics Dashboard — Crime (Optimised for Large Dat
 
 # Sidebar controls
 st.sidebar.header("Settings (performance)")
-data_file = st.sidebar.text_input("Path to data (ZIP or CSV)", value="data/humberside-street-merged.zip")
+data_file = st.sidebar.text_input("Path to data (ZIP or CSV)", value="data/humberside_merged.zip")
 sample_for_training = st.sidebar.slider("Max training samples (stratified)", min_value=2000, max_value=100000, value=MAX_TRAIN_SAMPLES, step=1000)
 tfidf_feats = st.sidebar.slider("TF-IDF max features", 200, 5000, TFIDF_MAX_FEATURES, step=100)
 force_retrain = st.sidebar.checkbox("Force retrain model now", value=False)
