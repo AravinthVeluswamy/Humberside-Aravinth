@@ -307,7 +307,7 @@ with tab1:
 # ----- EDA (fast) and (swift) for good audience view-----
 with tab2:
     st.header("Exploratory Data Analysis (fast & sample-based)")
-    st.write("Visualisations below are created on a sampled subset for speed (adjust sample size if needed).")
+    st.write("Visualisations below are created on a sampled subset for speed (You can adjust sample size if needed).")
     # sample for plots
     plot_sample_size = min(20000, len(df))
     df_sample = df.sample(n=plot_sample_size, random_state=SEED)
@@ -418,4 +418,4 @@ sample_dl = df.sample(n=min(2000, len(df)), random_state=SEED)
 st.sidebar.download_button("Download sample CSV", data=sample_dl.to_csv(index=False).encode(), file_name="crime_sample.csv")
 
 st.caption("Optimised dashboard: In this training uses stratified sampling + small TF-IDF + light classifier. "
-           "For higher accuracy, I can increase sampling sizes & TF-IDF features in the sidebar (will cost more time).")
+           "For higher accuracy, You can easily increase sampling sizes & TF-IDF features in the sidebar (It will just cost more time in loading).")
