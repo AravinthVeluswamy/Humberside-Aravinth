@@ -313,7 +313,7 @@ with tab2:
     df_sample = df.sample(n=plot_sample_size, random_state=SEED)
 
     # Map is built using Streamlit's native map (fast)
-    if ('Latitude' in df.columns) and ('Longitude' in df.columns'):
+    if ('Latitude' in df.columns) and ('Longitude' in df.columns):
         st.subheader("Geographic sample (fast map)")
         st.map(df_sample[['Latitude', 'Longitude']].rename(columns={'Latitude':'lat','Longitude':'lon'})[['lat','lon']].dropna())
 
